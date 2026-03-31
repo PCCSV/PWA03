@@ -1,13 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <title>Site Inspection</title>
 
-<input type="file" accept="image/*;capture=camera">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
 
-</body>
+    <link rel="manifest" href="manifest.json" />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="bg-light">
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <span class="navbar-brand">Inspection App</span>
+
+        <select id="projectFilter" class="form-select w-auto"></select>
+      </div>
+    </nav>
+
+    <div class="container mt-3">
+      <div id="loginView">
+        <h3>Login</h3>
+
+        <input class="form-control mb-2" id="email" placeholder="Email" />
+
+        <input type="password" class="form-control mb-2" id="password" />
+
+        <button class="btn btn-primary w-100" onclick="login()">Login</button>
+      </div>
+
+      <div id="appView" class="d-none">
+        <button class="btn btn-success mb-2" onclick="newInspection()">
+          New Inspection
+        </button>
+
+        <select id="statusFilter" class="form-select mb-2"></select>
+
+        <div id="inspectionList"></div>
+      </div>
+
+      <div id="inspectionForm" class="d-none">
+        <h4>Inspection</h4>
+
+        <input id="title" class="form-control mb-2" placeholder="Title" />
+
+        <select id="project" class="form-select mb-2"></select>
+
+        <select id="status" class="form-select mb-2">
+          <option>Open</option>
+          <option>In Progress</option>
+          <option>Closed</option>
+        </select>
+
+        <textarea id="notes" class="form-control mb-2"></textarea>
+
+        <input
+          type="file"
+          id="imageInput"
+          accept="image/*"
+          capture="environment"
+        />
+
+        <img id="preview" class="img-fluid mt-2" />
+
+        <canvas id="signature" class="border mt-2"></canvas>
+
+        <button class="btn btn-primary mt-2" onclick="saveInspection()">
+          Save
+        </button>
+
+        <button class="btn btn-secondary mt-2" onclick="back()">Back</button>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="db.js"></script>
+    <script src="auth.js"></script>
+    <script src="offline.js"></script>
+    <script src="signature.js"></script>
+    <script src="image.js"></script>
+    <script src="pdf.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("service-worker.js");
+      }
+    </script>
+  </body>
 </html>

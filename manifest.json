@@ -1,0 +1,15 @@
+{
+  "name": "Inspection App",
+  "short_name": "Inspect",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "Site inspection",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
